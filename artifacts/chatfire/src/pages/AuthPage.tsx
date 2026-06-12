@@ -108,7 +108,19 @@ export default function AuthPage() {
     } catch (err: unknown) {
       const msg = (err as { code?: string })?.code;
       if (msg === "auth/email-already-in-use") {
-        setError("Bu e-posta zaten kayıtlı.");
+        // Firebase auth user exists but Firestore doc may not (incomplete registration)
+        // Try to sign in so user can continue email verification
+        try {
+          const cred2 = await signInWithEmailAndPassword(auth, email, password);
+          localStorage.setItem("cf_pending_reg", JSON.stringify({
+            uid: cred2.user.uid,
+            username: username.toLowerCase(),
+            displayUsername: username,
+            email,
+          }));
+        } catch {
+          setError("Bu e-posta zaten kayıtlı. Giriş yapmayı deneyin.");
+        }
       } else if (msg === "auth/invalid-email") {
         setError("Geçersiz e-posta adresi.");
       } else {

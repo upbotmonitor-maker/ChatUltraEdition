@@ -3,7 +3,7 @@ import { signOut } from "firebase/auth";
 import { auth, db } from "@/lib/firebase";
 import { doc, setDoc } from "firebase/firestore";
 
-const API = "/api";
+const API = (import.meta.env.VITE_API_URL ?? "") + "/api";
 
 export default function VerifyEmailPage() {
   const user = auth.currentUser!;
