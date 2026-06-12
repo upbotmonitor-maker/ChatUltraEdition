@@ -259,9 +259,16 @@ export default function VerifyEmailPage() {
                 </button>
 
                 {/* Spam notice */}
-                <p className="text-xs text-muted-foreground text-center">
-                  Gelmedi mi? <span className="font-medium">Spam / Junk</span> klasörünü kontrol et.
-                </p>
+                <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/50 rounded-xl px-4 py-3 flex gap-3 items-start">
+                  <span className="text-amber-500 text-base mt-0.5 flex-shrink-0">⚠️</span>
+                  <div className="text-xs text-amber-800 dark:text-amber-300 leading-relaxed">
+                    <span className="font-bold">Kod gelmediyse</span> — e-posta kutunun{" "}
+                    <span className="font-bold underline">Spam</span>,{" "}
+                    <span className="font-bold underline">Gereksiz</span> veya{" "}
+                    <span className="font-bold underline">Junk</span> klasörünü mutlaka kontrol et.
+                    Bazen otomatik filtreler doğrulama maillerini oraya atar.
+                  </div>
+                </div>
               </div>
             )}
 
