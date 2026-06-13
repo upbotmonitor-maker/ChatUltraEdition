@@ -2,7 +2,7 @@ services:
     - type: web
       name: ChatUltraEdition
       runtime: static
-      buildCommand: npm install --force && npm run build
+      buildCommand: yarn install && yarn build
       staticPublishPath: dist
       envVars:
         - key: VITE_FIREBASE_API_KEY
