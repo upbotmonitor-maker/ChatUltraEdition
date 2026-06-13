@@ -2,7 +2,7 @@ services:
     - type: web
       name: ChatUltraEdition
       runtime: static
-      buildCommand: echo "Pre-built"
+      buildCommand: yarn install && yarn build
       staticPublishPath: dist
       envVars:
         - key: VITE_FIREBASE_API_KEY
@@ -16,6 +16,8 @@ services:
         - key: VITE_FIREBASE_MESSAGING_SENDER_ID
           sync: false
         - key: VITE_FIREBASE_APP_ID
+          sync: false
+        - key: VITE_IMGBB_API_KEY
           sync: false
       routes:
         - type: rewrite
